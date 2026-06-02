@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LingoSphere - Premium Language Translator</title>
+    <!-- Google Fonts: Outfit (headings) & Inter (body, UI elements) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Decorative Glow elements for rich glassmorphism aesthetic -->
+    <div class="glow-orb glow-1"></div>
+    <div class="glow-orb glow-2"></div>
+    <div class="glow-orb glow-3"></div>
+
+    <div class="app-container">
+        <!-- Premium Header -->
+        <header class="app-header">
+            <div class="logo-area">
+                <div class="logo-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m5 8 6 6 6-6"/>
+                        <path d="m4 14 6-6 8 8"/>
+                    </svg>
+                </div>
+                <h1 class="logo">LingoSphere</h1>
+            </div>
+            <p class="tagline">Seamless neural translation across the globe</p>
+        </header>
+
+        <!-- Main Translator Grid -->
+        <main class="translator-container">
+            
+            <!-- Source Card -->
+            <section class="card source-card" id="source-card-element">
+                <div class="card-header">
+                    <div class="dropdown-wrapper" id="source-dropdown-wrapper">
+                        <button class="dropdown-trigger" id="source-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                            <span class="selected-lang-flag">🌐</span>
+                            <span class="selected-lang-text">Detect Language</span>
+                            <span class="chevron-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                            </span>
+                        </button>
+                        <div class="dropdown-panel" id="source-dropdown-panel">
+                            <div class="dropdown-search-box">
+                                <span class="search-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                                </span>
+                                <input type="text" class="dropdown-search" id="source-search" placeholder="Search languages..." autocomplete="off">
+                            </div>
+                            <ul class="dropdown-options" id="source-options-list" role="listbox">
+                                <!-- Will be populated dynamically via JavaScript -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <textarea id="source-text" placeholder="Type or paste your text here..." maxlength="5000" spellcheck="true"></textarea>
+                </div>
+
+                <div class="card-footer">
+                    <span id="char-counter" class="char-count">0 / 5000</span>
+                    <button id="clear-btn" class="icon-btn" title="Clear text" aria-label="Clear text">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 6 6 18"/>
+                            <path d="m6 6 12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Middle Actions Divider -->
+            <div class="controls-divider">
+                <button id="swap-btn" class="swap-btn" title="Swap languages" aria-label="Swap languages">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m7 21-4-4 4-4"/>
+                        <path d="M21 17H3"/>
+                        <path d="m17 3 4 4-4 4"/>
+                        <path d="M3 7h18"/>
+                    </svg>
+                </button>
+                <button id="translate-btn" class="btn btn-primary">
+                    <span>Translate</span>
+                    <span class="btn-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </span>
+                </button>
+            </div>
+
+            <!-- Target Card -->
+            <section class="card target-card" id="target-card-element">
+                <div class="card-header">
+                    <div class="dropdown-wrapper" id="target-dropdown-wrapper">
+                        <button class="dropdown-trigger" id="target-dropdown-btn" aria-haspopup="listbox" aria-expanded="false">
+                            <span class="selected-lang-flag">🌐</span>
+                            <span class="selected-lang-text">Spanish</span>
+                            <span class="chevron-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                            </span>
+                        </button>
+                        <div class="dropdown-panel" id="target-dropdown-panel">
+                            <div class="dropdown-search-box">
+                                <span class="search-icon">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                                </span>
+                                <input type="text" class="dropdown-search" id="target-search" placeholder="Search languages..." autocomplete="off">
+                            </div>
+                            <ul class="dropdown-options" id="target-options-list" role="listbox">
+                                <!-- Will be populated dynamically via JavaScript -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card-body">
+                    <div class="textarea-wrapper">
+                        <textarea id="target-text" placeholder="Translation will appear here..." readonly></textarea>
+                    </div>
+                </div>
+
+                <div class="card-footer">
+                    <div class="status-indicator" id="translation-status">
+                        <span class="status-dot"></span>
+                        <span class="status-message">Ready</span>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Premium Footer -->
+        <footer class="app-footer">
+            <p>&copy; 2026 LingoSphere. Crafted with visual excellence. Powered by neural Google Translate API.</p>
+        </footer>
+    </div>
+
+    <!-- Application Script -->
+    <script type="module" src="app.js"></script>
+</body>
+</html>
